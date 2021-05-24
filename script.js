@@ -1,3 +1,7 @@
+// unpacking data into separate variables
+// ES 6 feature
+// We will simulate food delivery application
+
 const restaurant = {
   name: 'Pepe Pizza',
   location: 'Tripureshwor',
@@ -5,47 +9,62 @@ const restaurant = {
   startermenu: ['Focaccia', 'Bruschetta', 'Garlic', 'bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
+  // 7. Application: Function return an array
   order: function (starterIndex, mainIndex) {
     return [this.startermenu[starterIndex], this.mainMenu[mainIndex]];
   },
 };
 
-// const arr = [1, 2, 3, 4, 5];
-// const a = arr[0];
-// const b = arr[1];
-// const c = arr[2];
-// const d = arr[3];
-// const e = arr[4];
-// console.log(arr);
-// // console.log(a, b, c, d, e);
-// const [a, , , b] = arr;
-// console.log(a, b);
-// console.log(arr);
+// 1. Without destructing
+const arr = [1, 2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+console.log(a, b, c);
 
-// let [a, b] = restaurant.categories;
-// console.log(a, b);
+// 2. With destructuring
+const [x, y, z] = arr;
+console.log(arr);
+console.log(x, y, z);
 
-// a = Italian;
-// b = Pizzeria;
+// 3. Original array not changed or destracted
+console.log(arr);
 
-// const temp = a;
-// a = b;
-// b = temp;
+// 4. lets take some element of object above
+const [first, second] = restaurant.categories;
+console.log(first, second);
 
-// console.log(a, b);
+// 5. If we only want to take first and third Element
+let [firstElement, , thirdElement] = restaurant.categories;
+console.log(firstElement, thirdElement);
 
-// [b, a] = [a, b];
-// console.log(a, b);
+// 6. Application: switch main and secondary categories
+// traditional approach
+const temp = firstElement;
+firstElement = thirdElement;
+secondary = temp;
+console.log(firstElement, thirdElement);
+// with destructing
+[thirdElement, firstElement] = [firstElement, thirdElement];
+console.log(firstElement, thirdElement);
 
-// const [i, j] = restaurant.order(2, 0);
-// console.log(i);
-// console.log(j);
+// 7. Application: Function return an array
+const [starter, main] = restaurant.order(2, 0);
+console.log(starter, main);
 
-// const arr = [1, 2, [4, 5]];
+// 8. Application: nested Array
+const nested = [2, 3, [4, 5]];
+// destructuring nested array
+const [i, , j] = nested;
+console.log(i, j);
+// retrieving individual elements: destructuring inside destructuring
+const [p, , [q, r]] = nested;
+console.log(p, q, r);
 
-// const [a, , [b, c]] = arr;
-
-// console.log(a, b, c);
-
-const [a = 1, b = 1, c = 1, d = 1, e = 1] = [8, 9];
-console.log(a, b, d);
+// 9. Setting default value to variables when extracting
+// if we don't know the nature of an array
+// useful while accessing api data
+// const [d, e, f] = [8, 9];
+// console.log(d, e, f);
+const [d = 1, e = 1, f = 1] = [8, 9];
+console.log(d, e, f);
