@@ -26,12 +26,12 @@ const restaurant = {
     },
   },
 
-  orderDelivery: function ({ time = '20:00', starterIndex = 0, mainIndex =2, address }) {
+  orderDelivery: function ({ time, starterIndex, mainIndex, address }) {
     // console.log(time);
-    console.log(starterIndex);
-    // console.log(
-    //   `Order Received! ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]}, will be delivered to ${address} at ${time}`
-    );
+    //console.log(starterIndex);
+    console.log(
+      `Order Received! ${this.mainMenu[mainIndex]} and ${this.startermenu[starterIndex]}, will be delivered to ${address} at ${time}`);
+    
   },
 };
 
@@ -45,30 +45,27 @@ const {
   categories: items = [],
   menu = [],
 } = restaurant;
-console.log(items, menu);
+// console.log(items, menu);
 
 let a = 10;
 let b = 20;
 const obj = { a: 5, b: 10 };
 ({ a, b } = obj);
 
-console.log(a);
+console.log(`value of a = ${a}`);
 
 const {
   fri: { open: opening, close },
 } = hours;
-console.log(opening);
+console.log(`Opening hours = ${opening}`);
+console.log(`Colosing hours = ${close}`);
 
 restaurant.orderDelivery({
   time: '20:30',
-  address: 'Kathmandu',
   mainIndex: 2,
   starterIndex: 1,
+  address:'Kathmandu',
 });
 
-// const age = function (ram, gopal, alex) {
-//   console.log(ram, alex, gopal);
-//   // 30, 14, 18
-// };
 
-// age(30, 14, 18);
+
